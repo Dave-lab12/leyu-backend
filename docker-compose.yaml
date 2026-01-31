@@ -2,9 +2,11 @@ version: "3.9"
 
 services:
   app:
-    image: "${DC_BACK_IMAGE_NAME}:${DC_BACK_IMAGE_TAG}"
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "${DC_BACK_APP_PORT}:3000"
+      - "3000:3000"
     restart: unless-stopped
     depends_on:
       redis:
@@ -17,7 +19,6 @@ services:
       RABBITMQ_URI: amqp://guest:guest@rabbitmq:5672
     networks:
       - backend_network
-
   redis:
     image: redis:7-alpine
     restart: unless-stopped
