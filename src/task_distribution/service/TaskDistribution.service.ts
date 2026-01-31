@@ -132,51 +132,7 @@ export class TaskDistributionService {
     );
     return;
   }
-  // async manualTaskDistributionForContributor(task_id: string,contributor_id:string,microtask_ids:string[], queryRunner: QueryRunner) {
-  //   // get the task
-  //   const task = await this.taskService.findOne({
-  //     where: { id: task_id },
-  //     relations: { microTasks: true, taskRequirement: true },
-  //   });
-  //   if (!task) {
-  //     throw new Error('Task not found');
-  //   }
-  //   let requirement = task?.taskRequirement;
-  //   await this.taskService.activateContributorToTask({
-  //     user_id:contributor_id,
-  //     task_id:task_id});
 
-  //   let contributor_micro_Tasks =
-  //   await this.contributorMicroTaskService.findOne({
-  //     where: { task_id: task_id,contributor_id:contributor_id },
-  //   });
-  //   await this.microTaskStatisticsService.findAll({
-  //     where: { task_id: task_id },
-  //   });
-  //   if (contributor_micro_Tasks) {
-  //     microtask_ids=microtask_ids.filter((micro_task_id) => {
-  //     return !contributor_micro_Tasks?.micro_task_ids.find((micro_task) => {
-  //       return micro_task == micro_task_id ;
-  //     });
-  //   })
-  //   }
-
-  //   await this.distributeNewTask(
-  //     {
-  //       task_id,
-  //       micro_task_ids:microtask_ids,
-  //       contributor_ids:[contributor_id],
-  //       expected_micro_task_for_contributor:
-  //         requirement.max_micro_task_per_contributor,
-  //       expected_no_of_contributors_per_micro_task:
-  //         requirement.max_contributor_per_micro_task,
-  //       batch: requirement.batch || requirement.max_micro_task_per_contributor,
-  //     },
-  //     task,
-  //     queryRunner,
-  //   );
-  //   return;
-  // }
 
   /**
    * Processes contributor–microtask distribution using gender-based constraints.
@@ -869,61 +825,7 @@ export class TaskDistributionService {
     return;
   }
 
-  /**
-   * Initialize the task distribution process for a newly created contributor.
-   * This method will first find all the matching tasks for the contributor and then
-   * assign micro tasks to the contributor for each matching task.
-   * @param event The event that triggered this method
-   * @returns void
-   */
-  // @OnEvent(ActionEvents.USER_CREATED)
-  // async initializeTaskDistributionForContributor(event: ContributorCreatedEvent) {
-  //   let contributor_id = event.user_id;
-  //   let user = await this.userService.findOne({
-  //     where: { id: contributor_id },
-  //   });
-  //   if (!user) {
-  //     throw new Error('User not found');
-  //   }
-  //   let tasks: { task: Task; score: number }[] =
-  //     await this.taskService.findMatchingTasks({
-  //       dialect_id: user.dialect_id,
-  //       language_id: user.language_id,
-  //       birth_date: user.birth_date,
-  //       gender: user.gender,
-  //     });
-  //   tasks=tasks.filter((task) => {
-  //     return task.task.require_contributor_test==false
-  //   })
-  //   await Promise.all(
-  //     tasks.map(async (task: { task: Task; score: number }) => {
-  //       const queryRunner: QueryRunner = this.dataSource.createQueryRunner();
-  //       await queryRunner.connect();
-  //       await queryRunner.startTransaction();
-  //       try {
-  //         let microTaskStatics = await this.microTaskStatisticsService.findAll({
-  //           where: { task_id: task.task.id },
-  //         });
-  //         if (microTaskStatics.length > 0) {
-  //           await this.assignMicroTasksToContributor(
-  //             contributor_id,
-  //             task.task.id,
-  //             task.task.taskRequirement.max_micro_task_per_contributor,
-  //             task.task.taskRequirement.batch ||
-  //               task.task.taskRequirement.max_micro_task_per_contributor,
-  //             microTaskStatics,
-  //             queryRunner,
-  //           );
-  //         }
-  //         await queryRunner.commitTransaction();
-  //       } catch (error) {
-  //         await queryRunner.rollbackTransaction();
-  //       }
-  //       await queryRunner.release();
-  //     }),
-  //   );
-  //   return;
-  // }
+
   async assignMicroTasksToContributor(
     contributor_id: string,
     task_id: string,

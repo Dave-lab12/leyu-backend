@@ -120,8 +120,8 @@ Leyu API is a robust backend system that facilitates collaborative data collecti
    
    # SMS Providers
 
-   AFRO_SMS_BASE_URL="https://api.afromessage.com/api"
-   AFRO_TOKEN="your-afro-token"
+   SMS_BASE_URL="https://api.afromessage.com/api"
+   SMS_TOKEN="your-afro-token"
    
    # Payment Gateway
    SANTIM_PAY_MERCHANT_ID="your-merchant-id"
