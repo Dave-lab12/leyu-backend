@@ -75,8 +75,9 @@ export class ActivityLogController {
     } else if (end_date) {
       activityLogQuery.created_date = LessThan(end_date);
     }
+    activityLogQuery.user_id = user_id;
     return this.activityLogService.find(paginateDto, {
-      where: { user_id, ...activityLogQuery },
+      where: activityLogQuery,
       relations: { user: true },
     });
   }

@@ -141,6 +141,7 @@ export class DataSetService {
       dialect_id: string;
       language_id: string;
       is_test: boolean;
+      audio_duration: number;
     }[],
     contributor_id: string,
     queryRunner: QueryRunner,

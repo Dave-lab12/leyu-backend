@@ -427,7 +427,7 @@ export class PublicSchemaMigration1710000000001 implements MigrationInterface {
         "rejection_reason_id"     character varying,
         "is_paid_for_reviewer"    boolean           NOT NULL DEFAULT false,
         "is_test"                 boolean           NOT NULL DEFAULT false,
-        "audio_duration"          integer,
+        "audio_duration"          double precision
         "created_by"              character varying,
         "updated_by"              character varying,
         "file_path"               character varying,

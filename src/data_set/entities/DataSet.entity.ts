@@ -67,7 +67,7 @@ export class DataSet {
   @Column({ default: false })
   is_test: boolean;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: 'float' })
   audio_duration: number;
 
   @Column({ nullable: true })

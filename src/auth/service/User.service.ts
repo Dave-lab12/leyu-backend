@@ -397,13 +397,17 @@ export class UserService {
     const projectManagerRole = await this.roleService.findOne({
       name: RoleConstant.PROJECT_MANAGER,
     });
-    const manager_role_id = projectManagerRole?.id || '';
+    const manager_role_id = projectManagerRole?.id;
     if (Array.isArray(query.where)) {
-      query.where = query.where.map((item) => ({
+      if (query.where.length === 0) {
+        query.where.push({ is_active: true, role_id: manager_role_id });
+      } else {
+      const data = query.where.map((item) =>({
         ...item,
         is_active: true,
         role_id: manager_role_id,
       }));
+    }
     } else {
       query.where = {
         ...query.where,
@@ -411,7 +415,6 @@ export class UserService {
         role_id: manager_role_id,
       };
     }
-
     return this.paginationService.paginateWithOptionQuery(
       paginationDto,
       'user',
