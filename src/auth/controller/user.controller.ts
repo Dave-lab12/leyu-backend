@@ -54,7 +54,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { RolesGuard } from 'src/auth/guard/role.guard';
 import { Roles } from '../decorators/roles.decorator';
 import { Role } from '../decorators/roles.enum';
-import { multerImageS3Storage } from 'config/minio.config';
+import { multerImageS3Storage } from 'src/config/minio.config';
 import { QueryOptions } from 'src/utils/queryOption.util';
 import { User } from '../entities/User.entity';
 import { ActivityLogService } from 'src/common/service/ActivityLog.service';

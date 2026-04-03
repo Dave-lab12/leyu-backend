@@ -61,7 +61,7 @@ import {
   ActivityLogActions,
 } from 'src/utils/constants/ActivityLog.actions';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { multerImageS3Storage } from 'config/minio.config';
+import { multerImageS3Storage } from 'src/config/minio.config';
 import { QueryOptions } from 'src/utils/queryOption.util';
 import { UserTask } from '../entities/UserTask.entity';
 import { User } from 'src/auth/entities/User.entity';

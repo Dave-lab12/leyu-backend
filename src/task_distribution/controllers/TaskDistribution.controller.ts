@@ -30,7 +30,7 @@ import { TaskDistributionService } from '../service/TaskDistribution.service';
 import { DataSource, QueryRunner } from 'typeorm';
 import { CreateMultipleDataSetDto } from '../dto/DataSet.dto';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
-import { multerAudioDiskConfig } from 'config/minio.config';
+import { multerAudioDiskConfig } from 'src/config/minio.config';
 import { PaginatedResult } from 'src/utils/paginate.util';
 import {
   ContributorTaskRto,

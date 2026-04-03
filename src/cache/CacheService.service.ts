@@ -17,7 +17,7 @@ export class CacheService implements OnModuleInit, OnModuleDestroy {
     private readonly configService: ConfigService,
   ) {}
   async onModuleInit() {
-    const redisUrl = this.configService.get<string>('REDIS_URL') || '';
+    const redisUrl = this.configService.get<string>('REDIS_URL') as string;
     this.client = new Redis(redisUrl);
     this.client.on('connect', () => this.logger.log('Connected to Redis'));
     this.client.on('error', (err) => this.logger.error('Redis error', err));

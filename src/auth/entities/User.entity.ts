@@ -135,7 +135,6 @@ export class User {
   userLogs: UserLog[];
 
   @OneToOne(() => Wallet, (wallet) => wallet.user)
-  @JoinColumn({ name: 'id' })
   wallet: Wallet[];
 
   @OneToMany(() => UserTask, (UserTask) => UserTask.user)
